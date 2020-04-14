@@ -26,7 +26,7 @@ public class NewBeeMallUserServiceImpl implements NewBeeMallUserService {
     public PageResult getNewBeeMallUsersPage(PageQueryUtil pageUtil) {
         List<MallUser> mallUsers = mallUserMapper.findMallUserList(pageUtil);
         int total = mallUserMapper.getTotalMallUsers(pageUtil);
-        PageResult pageResult = new PageResult(mallUsers, total, pageUtil.getLimit(), pageUtil.getPage());
+        PageResult pageResult = new PageResult(mallUsers, total, (int) pageUtil.get("limit"), (int) pageUtil.get("page"));
         return pageResult;
     }
 

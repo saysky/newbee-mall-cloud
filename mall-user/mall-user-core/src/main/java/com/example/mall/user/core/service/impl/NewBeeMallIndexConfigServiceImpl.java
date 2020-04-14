@@ -36,7 +36,7 @@ public class NewBeeMallIndexConfigServiceImpl implements NewBeeMallIndexConfigSe
     public PageResult getConfigsPage(PageQueryUtil pageUtil) {
         List<IndexConfig> indexConfigs = indexConfigMapper.findIndexConfigList(pageUtil);
         int total = indexConfigMapper.getTotalIndexConfigs(pageUtil);
-        PageResult pageResult = new PageResult(indexConfigs, total, pageUtil.getLimit(), pageUtil.getPage());
+        PageResult pageResult = new PageResult(indexConfigs, total, (int) pageUtil.get("limit"), (int) pageUtil.get("page"));
         return pageResult;
     }
 

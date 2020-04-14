@@ -34,7 +34,7 @@ public class NewBeeMallGoodsServiceImpl implements NewBeeMallGoodsService {
     public PageResult getNewBeeMallGoodsPage(PageQueryUtil pageUtil) {
         List<NewBeeMallGoods> goodsList = goodsMapper.findNewBeeMallGoodsList(pageUtil);
         int total = goodsMapper.getTotalNewBeeMallGoods(pageUtil);
-        PageResult pageResult = new PageResult(goodsList, total, pageUtil.getLimit(), pageUtil.getPage());
+        PageResult pageResult = new PageResult(goodsList, total, (int) pageUtil.get("limit"), (int) pageUtil.get("page"));
         return pageResult;
     }
 
@@ -107,7 +107,7 @@ public class NewBeeMallGoodsServiceImpl implements NewBeeMallGoodsService {
                 }
             }
         }
-        PageResult pageResult = new PageResult(newBeeMallSearchGoodsVOS, total, pageUtil.getLimit(), pageUtil.getPage());
+        PageResult pageResult = new PageResult(newBeeMallSearchGoodsVOS, total, (int) pageUtil.get("limit"), (int) pageUtil.get("page"));
         return pageResult;
     }
 

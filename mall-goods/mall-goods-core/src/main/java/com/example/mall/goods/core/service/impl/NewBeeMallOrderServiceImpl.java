@@ -49,7 +49,7 @@ public class NewBeeMallOrderServiceImpl implements NewBeeMallOrderService {
     public PageResult getNewBeeMallOrdersPage(PageQueryUtil pageUtil) {
         List<NewBeeMallOrder> newBeeMallOrders = newBeeMallOrderMapper.findNewBeeMallOrderList(pageUtil);
         int total = newBeeMallOrderMapper.getTotalNewBeeMallOrders(pageUtil);
-        PageResult pageResult = new PageResult(newBeeMallOrders, total, pageUtil.getLimit(), pageUtil.getPage());
+        PageResult pageResult = new PageResult(newBeeMallOrders, total, (int) pageUtil.get("limit"), (int) pageUtil.get("page"));
         return pageResult;
     }
 
@@ -306,7 +306,7 @@ public class NewBeeMallOrderServiceImpl implements NewBeeMallOrderService {
                 }
             }
         }
-        PageResult pageResult = new PageResult(orderListVOS, total, pageUtil.getLimit(), pageUtil.getPage());
+        PageResult pageResult = new PageResult(orderListVOS, total, (int) pageUtil.get("limit"), (int) pageUtil.get("page"));
         return pageResult;
     }
 

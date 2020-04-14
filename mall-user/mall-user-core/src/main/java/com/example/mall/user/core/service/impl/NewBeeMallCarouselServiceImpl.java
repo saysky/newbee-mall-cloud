@@ -28,7 +28,7 @@ public class NewBeeMallCarouselServiceImpl implements NewBeeMallCarouselService 
     public PageResult getCarouselPage(PageQueryUtil pageUtil) {
         List<Carousel> carousels = carouselMapper.findCarouselList(pageUtil);
         int total = carouselMapper.getTotalCarousels(pageUtil);
-        PageResult pageResult = new PageResult(carousels, total, pageUtil.getLimit(), pageUtil.getPage());
+        PageResult pageResult = new PageResult(carousels, total, (int) pageUtil.get("limit"), (int) pageUtil.get("page"));
         return pageResult;
     }
 
